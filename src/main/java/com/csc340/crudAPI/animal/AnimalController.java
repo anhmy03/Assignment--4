@@ -45,7 +45,7 @@ public class AnimalController {
 
     // Get animals by species
     @GetMapping("/species/{species}")
-    public List<Animal> getAnimalsBySpecies(@PathVariable String species,@RequestBody Animal animal) {
+    public List<Animal> getAnimalsBySpecies(@PathVariable String species) {
         return animalService.getAnimalsBySpecies(species);
     }
 
