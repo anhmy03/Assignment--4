@@ -1,143 +1,126 @@
-- You MUST have the database up and running before running the project! 
-    - Open your XAMPP Control Panel.
-    - Start the Apache server.
-    - Start MySQL.
-    - Click on MySQL "Admin" to open up the DBMS.
-    - Ensure the database that you need is available.
-- Build and run the main class. You should see 2 new tables created in the aforementioned database.
-
-## API Endpoints
-Use POSTMAN to try the following endpoints:
-
 ## Get list of Students
 
 ### Request
 
-    `GET /students/all`
+    `GET /animals/all`
 
-    `http://localhost:8080/students/all`
+    `http://localhost:8080/amimals/all`
 
    
 ### Response
 
      [
    
-     {"studentId": 1, "name": "sample1", "major": "csc", "gpa": 3.89}, 
+     {"animalID": 1, "name": "example1", "scientificName": null, "species": cat, "habitat": "", "description": null}, 
    
-     {"studentId": 2, "name": "sample2", "major": "mat", "gpa": 4.0}, 
+     {"animalID": 2, "name": "example2", "scientificName": null, "species": dog, "habitat": "", "description": null}, 
    
-     { "studentId": 3, "name": "sample3", "major": "eng", "gpa": 3.25}
+     {"animalID": 3, "name": "example3", "scientificName": null, "species": bird, "habitat": "", "description": null}, 
    
      ]
 
-## Get a specific Student
+## Get a specific Animal
 
 ### Request
 
-`GET /students/{studentId}`
+`GET /animals/{id}`
 
-`http://localhost:8080/students/1`
+`http://localhost:8080/animals/1`
 
 ### Response
 
     {
-      "studentId": 1, "name": "sample1", "major": "csc", "gpa": 3.89
+     {"animalID": 1, "name": "cat1", "scientificName": null, "species": cat, "habitat": "", "description": null}, 
     }
 
      
-## Create a new Student
+## Create a new Animal
 
 ### Request
 
-    `POST /students/new`
+    `POST /animals/new`
     
-    `http://localhost:8080/students/new` --data '{ "name": "sample4", "major": "csc", "gpa": 3.55}'
+    `http://localhost:8080/students/new` --data '{"name": "example4", "scientificName": null, "species": fish, "habitat": "", "description": null}'
 
    ### Response
 
    [
    
-     {"studentId": 1, "name": "sample1", "major": "csc", "gpa": 3.89}, 
+     {"animalID": 1, "name": "example1", "scientificName": null, "species": cat, "habitat": "", "description": null}, 
    
-     {"studentId": 2, "name": "sample2", "major": "mat", "gpa": 4.0}, 
+     {"animalID": 2, "name": "example2", "scientificName": null, "species": dog, "habitat": "", "description": null}, 
    
-     { "studentId": 3, "name": "sample3", "major": "eng", "gpa": 3.25},
-
-     { "studentId": 4, "name": "sample4", "major": "csc", "gpa": 3.55}
-   
+     {"animalID": 3, "name": "example3", "scientificName": null, "species": bird, "habitat": "", "description": null}, 
+     
+     {"animalID": 4, "name": "example4", "scientificName": null, "species": fish, "habitat": "", "description": null}   
   ]
 
-## Get Students by major
+## Get Animal by name
 
 ### Request
 
-    `GET /students?major=csc`
+    `GET /animals/search?name=example1`
 
-    `http://localhost:8080/students?major=csc`
+    `http://localhost:8080/animals/search?name=example1`
 
    
 ### Response
 
      [
    
-      {"studentId": 1, "name": "sample1", "major": "csc", "gpa": 3.89}, 
-   
-      { "studentId": 4, "name": "sample4", "major": "csc", "gpa": 3.55}
-   
+     {"animalID": 1, "name": "example1", "scientificName": null, "species": cat, "habitat": "", "description": null}
+     
      ]
 
-## Get Honors students
+## Get Animal by specie
 
 ### Request
 
-    `GET /students/honors?gpa=3.5`
+    `GET /animals/species/{species}`
 
-    `http://localhost:8080/students/honors?gpa=3.5`
+    `http://localhost:8080/animals/species/dog`
 
    
 ### Response
 
    [
    
-     {"studentId": 1, "name": "sample1", "major": "csc", "gpa": 3.89}, 
-   
-     {"studentId": 2, "name": "sample2", "major": "mat", "gpa": 4.0},    
-
-     { "studentId": 4, "name": "sample4", "major": "csc", "gpa": 3.55}
-     
+     {"animalID": 2, "name": "example2", "scientificName": null, "species": dog, "habitat": "", "description": null} 
+        
    ]
 
-## Update an existing Student
+## Update an existing Animal
 
 ### Request
 
-    `PUT /students/update/{studentId}`
+    `PUT /animals/update/{id}`
     
-    `http://localhost:8080/students/update/1` --data '{ "name": "sampleUpdated", "major": "csc", "gpa": 3.92}'
+    `http://localhost:8080/students/update/1` --data '{"name": "update1", "scientificName": null, "species": cat, "habitat": "", "description": null}'
+
 
    ### Response
    
     {
-      "studentId": 1, "name": "sampleUpdated", "major": "csc", "gpa": 3.92
+     {"animalID": 1, "name": "update1", "scientificName": null, "species": cat, "habitat": "", "description": null}
     }
 
 
-## Delete an existing Student
+## Delete an existing Animal
 
 ### Request
 
-    `DELETE /students/delete/{studentId}`
+    `DELETE /animals/delete/{id}`
     
-    `http://localhost:8080/students/delete/1`
+    `http://localhost:8080/animals/delete/1`
 
    ### Response
    
    [
    
-     {"studentId": 2, "name": "sample2", "major": "mat", "gpa": 4.0}, 
+     {"animalID": 2, "name": "example2", "scientificName": null, "species": dog, "habitat": "", "description": null}, 
    
-     { "studentId": 3, "name": "sample3", "major": "eng", "gpa": 3.25},
-
-     { "studentId": 4, "name": "sample4", "major": "csc", "gpa": 3.55}
+     {"animalID": 3, "name": "example3", "scientificName": null, "species": bird, "habitat": "", "description": null}, 
+     
+     {"animalID": 4, "name": "example4", "scientificName": null, "species": fish, "habitat": "", "description": null}   
    
   ]
